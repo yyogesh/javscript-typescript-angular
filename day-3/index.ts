@@ -250,3 +250,56 @@ interface Backpack<T, U> {
 // x1.add("asdf");
 // x1.get()
 
+// function getArray(items: any[]): any[] {
+//     return new Array().concat(items);
+// }
+
+
+function getArray<T>(items: T[]): T[] {
+    return new Array<T>().concat(items);
+}
+
+let myNumArr = getArray<number>([100, 200])
+let myStrArr = getArray<string>(['a', 'b'])
+
+
+function displayType<T, U>(id: T, name: U): void {
+    console.log(typeof (id) + ", " + typeof (name));
+}
+
+displayType<number, string>(1, "Steve"); // number, string
+
+function simpleStringState(initial: string): [() => string, (v: string) => void] {
+    let str: string = initial;
+
+    return [
+        () => str,
+        (v: string) => {
+            str = v;
+        }
+    ]
+}
+
+
+const [str1Getter, str1Setter] = simpleStringState("hello");
+
+console.log(str1Getter())
+str1Setter('abc')
+console.log(str1Getter())
+
+function simpleStringState1<T>(initial: T): [() => T, (v: T) => void] {
+    let str: T = initial;
+
+    return [
+        () => str,
+        (v: T) => {
+            str = v;
+        }
+    ]
+}
+
+const [str2Getter, str2Setter] = simpleStringState1<string>("hello");
+
+console.log(str2Getter())
+str2Setter('abc')
+console.log(str2Getter())
