@@ -1,0 +1,18 @@
+.btn {
+  background-color: purple;
+  color: white;
+  border-radius: 7px;
+  padding: 6px 20px;
+
+  &.active {
+    background-color: green;
+  }
+}
+
+.isError {
+  font-size: 20px;
+}
+
+.isWarning {
+  color: red;
+}

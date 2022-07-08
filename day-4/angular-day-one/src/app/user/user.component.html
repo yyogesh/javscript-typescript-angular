@@ -1,0 +1,41 @@
+<p>user works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th scope="col">website</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index; let isFirst = first;
+    let isLast = last; let isOdd = odd">
+      <th scope="row">{{i}} {{isFirst}} {{isLast}} {{isOdd}}</th>
+      <td>{{user.name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.website}}</td>
+    </tr>
+    <tr *ngIf="users.length === 0">
+      <td colspan="4">No user to display</td>
+    </tr>
+  </tbody>
+</table>
+<ul>
+  <li *ngFor="let subject of objectKeys(subjects)">
+    {{subject}}
+  </li>
+</ul>
+
+<select [(ngModel)]="selectedCountry" (change)="handleCountryChange()">
+  <option *ngFor="let country of countryies" [value]="country.id">{{country.name}}</option>
+</select>
+
+{{selectedCountry}}
+
+{{subjects | json}}
+<!-- <div *ngIf="1 === 1" >
+  <ng-container *ngFor="let user of users">
+    asdf
+  </ng-container>
+</div> -->
