@@ -1,0 +1,34 @@
+<div class="mb-3">
+  <label for="exampleInputEmail1" class="form-label">Filter</label>
+  <input type="email" class="form-control" [(ngModel)]="filterText" id="exampleInputEmail1"
+    aria-describedby="emailHelp">
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image
+        <mat-icon aria-hidden="false" (click)="toggleImage()" aria-label="Example home icon">image</mat-icon>
+      </th>
+      <th scope="col">Product</th>
+      <th scope="col">Code</th>
+      <th scope="col">Price</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of games | gameFilter : filterText; let i = index">
+      <td>{{i + 1}}</td>
+      <td>
+        <img [src]="game.imageUrl | fallbackImage : 'assets/images/no-image.jpg'" width="90px"
+          [ngStyle]="{width : showImage ? '90px' : '40px'}" />
+      </td>
+      <td>{{game.productName | uppercase}}</td>
+      <td>{{game.productCode}}</td>
+      <td>{{game.price | currency : 'INR' : 'symbol-narrow' : '4.5-8'}}</td>
+      <td>{{game.price | cost}}</td>
+      <td>{{game.starRating}}</td>
+    </tr>
+  </tbody>
+</table>

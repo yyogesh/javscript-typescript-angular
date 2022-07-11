@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let user of users; let i = index; let isFirst = first;
-    let isLast = last; let isOdd = odd">
+    let isLast = last; let isOdd = odd" [ngClass]="{'top-color' : i < 3 , 'bottom-color' : users.length - i <= 3 }">
       <th scope="row">{{i}} {{isFirst}} {{isLast}} {{isOdd}}</th>
       <td>{{user.name}}</td>
       <td>{{user.email}}</td>

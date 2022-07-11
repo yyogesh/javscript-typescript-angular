@@ -1,0 +1,31 @@
+app
+              Product --- folder
+                            components --- folder
+                                         // run generate command // ng g c product/components/product-list
+                                           product-list -- folder
+                                                        product-list.component.ts --- file  // ===> add component in  declartion of product.module.ts
+                                                       product-list.component.html  --- file
+                                                       product-list.component.css  --- file
+                                                       product-list.component.spec.ts  --- file
+                            service  --- folder
+                           pipe --- folder
+                           product.module.ts --- file  //  ===> export ProductModule import in app.module.ts ====> register in imports : [ProductModule]
+
+
+              Login  --- folder
+                            components --- folder
+                            service  --- folder
+                           pipe --- folder
+                           login.module.ts --- file
+
+              Home  --- folder
+                            components --- folder
+                            services  --- folder
+                           pipes --- folder
+                           home.module.ts --- file
+
+    Shared  --- folder
+                            components --- folder
+                            services  --- folder
+                           pipes --- folder
+                           shared.module.ts --- file
