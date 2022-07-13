@@ -1,0 +1,11 @@
+.star-wrapper {
+  div {
+    display: flex;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  mat-icon {
+    display: inline-table;
+  }
+}

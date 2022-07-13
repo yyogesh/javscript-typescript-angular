@@ -16,3 +16,8 @@
 </mat-card> <hr />-->
 
 <app-game></app-game>
+
+<input type="text" #firstNameInput>
+<input type="text" #secondNameInput>
+
+<button (click)="showInput(firstNameInput.value)">Show</button>

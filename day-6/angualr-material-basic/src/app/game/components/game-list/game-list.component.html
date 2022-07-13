@@ -2,6 +2,8 @@
   <label for="exampleInputEmail1" class="form-label">Filter</label>
   <input type="email" class="form-control" [(ngModel)]="filterText" id="exampleInputEmail1"
     aria-describedby="emailHelp">
+  <app-drop-list [options]="carList" (optionChange)="handleOptionChange($event)"></app-drop-list>
+  <app-drop-list [options]="productList" (optionChange)="handleOptionChange($event)"></app-drop-list>
 </div>
 <table class="table">
   <thead>
@@ -28,7 +30,71 @@
       <td>{{game.productCode}}</td>
       <td>{{game.price | currency : 'INR' : 'symbol-narrow' : '4.5-8'}}</td>
       <td>{{game.price | cost}}</td>
-      <td>{{game.starRating}}</td>
+      <td>
+        <app-star [rating]="game.starRating" (ratingClicked)="handleRatingClick($event)"></app-star>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<hr />
+<div class="m-4">
+  <app-game-card [title]="'Game Card'">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td colspan="2">Larry the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>Game List</h1>
+  </app-game-card>
+</div>
+
+<div class="m-4">
+  <app-game-card [title]="'Game Form'">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <h1>Game Form</h1>
+  </app-game-card>
+</div>
+
+<hr />
+
+<ng-template #cardHeader>
+  <div>Header template of card component</div>
+</ng-template>
+
+<app-game-content [headerTemplate]="cardHeader"></app-game-content>
+<hr />
+<app-game-wrapper>
+  <app-game-info></app-game-info>
+</app-game-wrapper>
