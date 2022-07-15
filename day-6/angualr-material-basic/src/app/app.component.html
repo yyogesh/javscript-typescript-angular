@@ -21,3 +21,8 @@
 <input type="text" #secondNameInput>
 
 <button (click)="showInput(firstNameInput.value)">Show</button>
+
+<button (click)="toggle()">Toggle</button>
+<div [@openClose]="isOpen ? 'open' : 'closed'">
+  Box is {{isOpen ? 'open' : 'closed'}}
+</div>

@@ -1,16 +1,39 @@
 import { AfterContentChecked, AfterContentInit, AfterViewChecked, Component, DoCheck, ElementRef, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 
+import { trigger, state, style, animate, transition } from '@angular/animations'
+
 import { environment } from '../environments/environment'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        height: '200px',
+        opacity: 1,
+        backgroundColor: 'orange'
+      })),
+      state('closed', style({
+        height: '100px',
+        opacity: 0.8,
+        backgroundColor: 'blue'
+      })),
+      transition("open => closed", [
+        animate('1s 1s ease-out')
+      ]),
+      transition('closed => open', [
+        animate('0.5s ease-in')
+      ])
+    ])
+  ]
 })
 export class AppComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterViewChecked, AfterContentChecked, AfterViewChecked, OnDestroy {
   @ViewChild('secondNameInput') secondNameInputRef: ElementRef = '' as any;
   title = 'angualr-material-basic';
   order = 1;
+  isOpen = true;
   constructor() {
     console.log('I am from constructor()!! and my order::::' + this.order);
     this.order++;
@@ -62,5 +85,9 @@ export class AppComponent implements OnChanges, OnInit, DoCheck, AfterContentIni
 
   showInput(text: string) {
     console.log('text', text, this.secondNameInputRef.nativeElement.value);
+  }
+
+  toggle() {
+    this.isOpen = !this.isOpen;
   }
 }

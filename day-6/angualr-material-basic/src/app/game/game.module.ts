@@ -14,16 +14,20 @@ import { GameCardComponent } from './components/game-card/game-card.component';
 import { GameContentComponent } from './components/game-content/game-content.component';
 import { GameInfoComponent } from './components/game-info/game-info.component';
 import { GameWrapperComponent } from './components/game-wrapper/game-wrapper.component';
+import { ElementHoverDirective } from './components/element-hover.directive';
 
-const components = [
+const declarationList = [
   GameListComponent,
   GameDetailComponent,
   GameComponent,
-  CostPipe
+  CostPipe,
+  FallbackImagePipe, GameFilterPipe, StarComponent, DropListComponent,
+  GameCardComponent, GameContentComponent, GameInfoComponent,
+  GameWrapperComponent, ElementHoverDirective
 ]
 
 @NgModule({
-  declarations: [...components, FallbackImagePipe, GameFilterPipe, StarComponent, DropListComponent, GameCardComponent, GameContentComponent, GameInfoComponent, GameWrapperComponent],
+  declarations: [...declarationList],
   imports: [
     CommonModule,
     MaterialModule,

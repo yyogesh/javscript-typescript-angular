@@ -30,12 +30,19 @@
       <td>{{game.productCode}}</td>
       <td>{{game.price | currency : 'INR' : 'symbol-narrow' : '4.5-8'}}</td>
       <td>{{game.price | cost}}</td>
-      <td>
+      <td appElementHover [title]="'star rating'">
         <app-star [rating]="game.starRating" (ratingClicked)="handleRatingClick($event)"></app-star>
+        <span class="rating-text">{{game.starRating}}</span>
       </td>
     </tr>
   </tbody>
 </table>
+
+<ul>
+  <li *ngFor="let user of users$ | async">
+    {{user.name}}
+  </li>
+</ul>
 
 <hr />
 <div class="m-4">
