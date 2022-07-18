@@ -12,7 +12,6 @@ export class GameService {
 
   constructor(private httpClient: HttpClient) { }
 
-
   getGameList(): Game[] {
     return games;
   }

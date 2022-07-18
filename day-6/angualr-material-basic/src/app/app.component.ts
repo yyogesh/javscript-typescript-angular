@@ -3,6 +3,7 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, Component, DoC
 import { trigger, state, style, animate, transition } from '@angular/animations'
 
 import { environment } from '../environments/environment'
+import { AsyncSubject, ReplaySubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +52,8 @@ export class AppComponent implements OnChanges, OnInit, DoCheck, AfterContentIni
     console.log('I am from ngOnInit() and my order::::' + this.order);
     console.log('environment.baseURL', environment.baseURL);
     this.order++;
+
+    this.getSubjectInfo();
   }
 
   ngDoCheck(): void {
@@ -90,4 +93,54 @@ export class AppComponent implements OnChanges, OnInit, DoCheck, AfterContentIni
   toggle() {
     this.isOpen = !this.isOpen;
   }
+
+
+  subject = new Subject();
+  replaySubject = new ReplaySubject(3);
+  asyncSubject = new AsyncSubject();
+  getSubjectInfo() {
+    this.subject.subscribe(value => {
+      console.log('ObserverA: ', value)
+    })
+
+    this.subject.subscribe(value => {
+      console.log('ObserverB: ', value)
+    })
+
+    this.subject.next(1);
+    this.subject.next(2);
+
+    this.replaySubject.subscribe(value => {
+      console.log('replaySubject ObserverA: ', value)
+    })
+
+    this.replaySubject.next(1);
+    this.replaySubject.next(2);
+    this.replaySubject.next(3);
+    this.replaySubject.next(4);
+    this.replaySubject.next(6);
+    this.replaySubject.next(7);
+
+    this.replaySubject.subscribe(value => {
+      console.log('replaySubject ObserverB: ', value)
+    })
+
+    this.replaySubject.next(5);
+
+    this.asyncSubject.subscribe(value => {
+      console.log('asyncSubject ObserverA: ', value)
+    })
+
+    this.asyncSubject.next(1);
+    this.asyncSubject.next(2);
+    this.asyncSubject.next(3);
+    this.asyncSubject.next(4);
+
+    this.asyncSubject.subscribe(value => {
+      console.log('asyncSubject ObserverB: ', value)
+    })
+    this.asyncSubject.next(5);
+    this.asyncSubject.complete();
+  }
+
 }

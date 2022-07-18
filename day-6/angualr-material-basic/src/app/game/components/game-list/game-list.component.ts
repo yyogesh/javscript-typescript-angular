@@ -3,7 +3,7 @@ import { Observable, of, Subscription } from 'rxjs';
 import { Game } from '../../models/game';
 import { SelectOption } from '../../models/selectOption';
 import { User } from '../../models/user';
-import { GameService } from '../../services/game.service';
+import { GameService, ManageInteractionService } from '../../services';
 
 @Component({
   selector: 'app-game-list',
@@ -22,10 +22,11 @@ export class GameListComponent implements OnInit, OnDestroy {
   productList: SelectOption[] = [];
   userSubscription: any = null;
   users$: Observable<User[]> = of();
-  constructor(private readonly gameService: GameService) { }
+  constructor(private readonly gameService: GameService, private readonly manageInteractionService: ManageInteractionService) { }
 
   ngOnInit(): void {
     this.games = this.gameService.getGameList();
+    this.manageInteractionService.gameInfoAnnonce(this.games[0]);
     this.productList = this.games.map(game => ({
       text: game.productName,
       value: game.productName

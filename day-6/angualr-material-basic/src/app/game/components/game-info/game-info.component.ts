@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../../models/game';
+import { ManageInteractionService } from '../../services';
 
 @Component({
   selector: 'app-game-info',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameInfoComponent implements OnInit {
   footerTitle = "Footer title of game info component"
-  constructor() { }
+  constructor(private readonly manageInteractionService: ManageInteractionService) { }
 
   ngOnInit(): void {
+    this.manageInteractionService.getGameInfo().subscribe((game: Game) => {
+      console.log('GameInfoComponent', game);
+    })
   }
 
 }

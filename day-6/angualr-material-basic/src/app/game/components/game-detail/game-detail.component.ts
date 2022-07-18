@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from '../../models/game';
+import { ManageInteractionService } from '../../services/manage-interaction.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(private readonly manageInteractionService: ManageInteractionService) { }
 
   ngOnInit(): void {
+    this.manageInteractionService.gameInfo$.subscribe((game: Game) => {
+      console.log('GameDetailComponent', game);
+    })
   }
 
 }
