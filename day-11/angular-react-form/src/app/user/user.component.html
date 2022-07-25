@@ -1,0 +1,14 @@
+<div class="form-wrapper">
+  <ng-container [formGroup]="userForm">
+    <!-- Basic Info container -->
+    <app-basic formGroupName="basicInfo"></app-basic>
+    <!-- /Basic Info container -->
+    <!-- address container -->
+    <app-address formGroupName="address"></app-address>
+    <!-- /address container -->
+  </ng-container>
+
+  <pre style="margin-top: 50px; border: 1px solid red; width: fit-content;">
+    {{userForm.value | json}}
+  </pre>
+</div>
