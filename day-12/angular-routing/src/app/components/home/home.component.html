@@ -1,0 +1,22 @@
+<form [formGroup]="searchForm">
+  <input formControlName="search" placeholder="Search Spotify artist">
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">UserName</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <th scope="row">{{i}}</th>
+      <td>{{user?.name}}</td>
+      <td>{{user?.username}}</td>
+      <td>{{user?.email}}</td>
+    </tr>
+  </tbody>
+</table>
