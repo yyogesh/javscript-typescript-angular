@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
+  { path: 'member', loadChildren: () => import('./modules/member/member.module').then(m => m.MemberModule) },
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '404' }
 ];
