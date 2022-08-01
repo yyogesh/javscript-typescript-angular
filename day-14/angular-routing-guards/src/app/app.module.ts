@@ -9,10 +9,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AdminModule } from './admin/admin.module';
 import { HomeModule } from './home/home.module';
+import { ConfirmDialogComponent } from './auth/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
