@@ -1,9 +1,9 @@
 <mat-progress-bar mode="indeterminate" *ngIf="isLoading$ | async" style="position: absolute;"></mat-progress-bar>
 <mat-toolbar color="primary">
-  <span>Resolve Guard:</span>
-  <a class="first-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" mat-button
-    routerLink="/">Users</a>
+    <span>Resolve Guard:</span>
+    <a class="first-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" mat-button
+        routerLink="/">Users</a>
 </mat-toolbar>
 <main class="content">
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 </main>

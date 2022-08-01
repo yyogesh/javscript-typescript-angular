@@ -5,8 +5,8 @@ import { UsersService } from "./user.service";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-user-list",
-  template: `
+    selector: "app-user-list",
+    template: `
     <ng-container *ngIf="users$ | async as users">
       <div *ngFor="let user of users" class="user-list">
         <div style="flex-grow: 1;">
@@ -17,8 +17,8 @@ import { Router } from "@angular/router";
       </div>
     </ng-container>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .user-list {
         display: flex;
         margin: 3px;
@@ -28,15 +28,15 @@ import { Router } from "@angular/router";
         align-items: center;
       }
     `,
-  ],
+    ],
 })
 
 export class UserListComponent implements OnInit {
-  users$!: Observable<User[]>;
-  constructor(private users: UsersService, private router: Router) { }
+    users$!: Observable<User[]>;
+    constructor(private users: UsersService, private router: Router) { }
 
-  ngOnInit(): void {
-    this.users$ = this.users.getUsers();
-    // this.router.navigate(['/user', 123])
-  }
+    ngOnInit(): void {
+        this.users$ = this.users.getUsers();
+        // this.router.navigate(['/user', 123])
+    }
 }
