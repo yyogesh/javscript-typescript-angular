@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
 import { ListDatasourceComponent } from './list-datasource/list-datasource.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ListDatasourceComponent } from './list-datasource/list-datasource.compo
     MatInputModule,
     MatFormFieldModule,
     RouterModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }
